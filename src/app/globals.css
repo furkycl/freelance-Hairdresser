@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+/* :root seçicisi, projenin en tepesidir ve global değişkenleri tanımlamak için kullanılır. */
+:root {
+  /* Renk Değişkenleri (RGB formatında) */
+  /* NOT: Renkleri bu şekilde R G B olarak ayırmak, Tailwind'in bg-ana/80 gibi opaklık sınıflarını kullanabilmesi için kritiktir. */
+  --renk-ana: 241 212 212; /* #F1D4D4 */
+  --renk-ikincil: 54 69 79; /* #36454F */
+  --renk-vurgu: 180 143 104; /* #B48F68 */
+  --renk-vurgu-dark: 160 126 91; /* #A07E5B */
+  --renk-metin: 51 51 51; /* #333333 */
+  --renk-arka-plan: 248 248 248; /* #F8F8F8 */
+
+  /* Font Değişkenleri */
+  /* Bu değişkenler layout.tsx dosyasında next/font tarafından doldurulacak */
+  --font-sans: var(--font-montserrat);
+  --font-serif: var(--font-playfair);
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
