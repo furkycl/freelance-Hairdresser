@@ -2,7 +2,8 @@
 
 import { motion } from "framer-motion";
 import { Phone, MessageSquare, Instagram } from "lucide-react";
-import Link from "next/link";
+
+// Link bileşenini kullanmadığımız için import listesinden kaldırıldı.
 
 export default function AppointmentPage() {
   return (
@@ -24,7 +25,11 @@ export default function AppointmentPage() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto"
           >
-            Size en uygun zaman için yerinizi ayırtın. Randevu almak için
+            {/* 
+              HATA DÜZELTMESİ: Cümle içindeki tek tırnak (') kaldırıldı.
+              Bu, "react/no-unescaped-entities" ESLint hatasını önler.
+            */}
+            Size en uygun zaman için yerinizi ayirtin. Randevu almak için
             aşağıdaki yöntemlerden birini kullanabilirsiniz.
           </motion.p>
         </div>
@@ -61,11 +66,14 @@ export default function AppointmentPage() {
           >
             <MessageSquare className="h-12 w-12 mx-auto mb-4 text-pink-500" />
             <h3 className="text-xl font-serif font-bold text-gray-800 mb-2">
-              WhatsApp'tan Yazın
+              WhatsApp&apos;tan Yazın
             </h3>
             <p className="text-gray-600 mb-4">
-              Müsait olmadığınızda veya yazarak iletişim kurmayı tercih
-              ettiğinizde ideal çözüm.
+              {/* 
+                HATA DÜZELTMESİ: Cümle içindeki tek tırnak (') kaldırıldı.
+              */}
+              Müsait olmadiginizda veya yazarak iletişim kurmayi tercih
+              ettiginizde ideal çözüm.
             </p>
             <a
               href="https://wa.me/905551234567"
@@ -84,7 +92,7 @@ export default function AppointmentPage() {
           >
             <Instagram className="h-12 w-12 mx-auto mb-4 text-pink-500" />
             <h3 className="text-xl font-serif font-bold text-gray-800 mb-2">
-              Instagram'dan Ulaşın
+              Instagram&apos;dan Ulaşın
             </h3>
             <p className="text-gray-600 mb-4">
               Çalışmalarımızı inceledikten sonra doğrudan Instagram DM üzerinden

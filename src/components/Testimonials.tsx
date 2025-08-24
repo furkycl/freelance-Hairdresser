@@ -45,7 +45,9 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.2 }}
             >
               <Quote className="h-8 w-8 text-pink-300 mb-4" />
-              <p className="text-gray-600 italic mb-6">"{testimonial.quote}"</p>
+              <p className="text-gray-600 italic mb-6 before:content-['\201C'] after:content-['\201D']">
+                {testimonial.quote}
+              </p>
               <p className="font-bold text-gray-800 text-right">
                 - {testimonial.name}
               </p>

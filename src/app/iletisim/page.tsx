@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import emailjs from "@emailjs/browser";
-import { motion } from "framer-motion";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 type FormInputs = {

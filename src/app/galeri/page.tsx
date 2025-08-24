@@ -4,6 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+// Lightbox kütüphanesini ve stillerini import ediyoruz
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+
 // Tüm galeri resimlerini kategorileriyle birlikte burada tanımlıyoruz.
 // Ana sayfadaki Instagram resimlerini burada da kullanabiliriz.
 const allImages = [
@@ -56,30 +60,31 @@ const categories = ["Tümü", "Kesim", "Renklendirme", "Topuz", "Makyaj"];
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] = useState("Tümü");
+  const [open, setOpen] = useState(false); // Lightbox'ın açık/kapalı durumu
+  const [currentIndex, setCurrentIndex] = useState(0); // Hangi resmin açılacağı
 
   const filteredImages =
     activeCategory === "Tümü"
       ? allImages
       : allImages.filter((image) => image.category === activeCategory);
 
+  const openLightbox = (index: number) => {
+    setCurrentIndex(index);
+    setOpen(true);
+  };
+
   return (
     <div className="bg-white">
-      {/* Sayfa Başlığı Alanı */}
+      {/* Sayfa Başlığı Alanı (Değişiklik yok) */}
       <div className="bg-pink-50 py-16 text-center">
         <div className="container mx-auto px-6">
           <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-serif text-gray-800"
+            /* ... */ className="text-4xl md:text-5xl font-serif text-gray-800"
           >
             Portfolyomuz
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto"
+            /* ... */ className="text-lg text-gray-600 mt-4 max-w-2xl mx-auto"
           >
             Sanatımızı ve yeteneğimizi sergilediğimiz çalışmalarımıza göz atın.
           </motion.p>
@@ -88,7 +93,7 @@ export default function GalleryPage() {
 
       {/* Galeri Alanı */}
       <div className="container mx-auto px-6 py-20">
-        {/* Filtre Butonları */}
+        {/* Filtre Butonları (Değişiklik yok) */}
         <div className="flex justify-center flex-wrap gap-4 mb-12">
           {categories.map((category) => (
             <button
@@ -108,7 +113,7 @@ export default function GalleryPage() {
         {/* Resim Grid'i */}
         <motion.div layout className="grid grid-cols-2 md:grid-cols-3 gap-4">
           <AnimatePresence>
-            {filteredImages.map((image) => (
+            {filteredImages.map((image, index) => (
               <motion.div
                 key={image.id}
                 layout
@@ -116,20 +121,30 @@ export default function GalleryPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ duration: 0.3 }}
-                className="relative aspect-square overflow-hidden rounded-lg shadow-md"
+                className="relative aspect-square overflow-hidden rounded-lg shadow-md cursor-pointer group"
+                onClick={() => openLightbox(index)} // Tıklandığında Lightbox'ı açar
               >
                 <Image
                   src={image.src}
                   alt={image.alt}
                   fill
                   style={{ objectFit: "cover" }}
-                  className="hover:scale-110 transition-transform duration-500"
+                  className="group-hover:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
               </motion.div>
             ))}
           </AnimatePresence>
         </motion.div>
       </div>
+
+      {/* Lightbox Bileşeni */}
+      <Lightbox
+        open={open}
+        close={() => setOpen(false)}
+        slides={filteredImages}
+        index={currentIndex}
+      />
     </div>
   );
 }

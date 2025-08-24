@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { Instagram, Facebook, Mail, Phone } from "lucide-react";
 
 export default function Footer() {

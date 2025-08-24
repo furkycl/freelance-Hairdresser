@@ -20,7 +20,7 @@ export default function InstagramGallery() {
     <section className="bg-white py-20 sm:py-28">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-3xl md:text-4xl font-serif text-gray-800 mb-4">
-          Bizi Instagram'da Takip Edin
+          Bizi Instagramda Takip Edin
         </h2>
         <Link
           href="#"

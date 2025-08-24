@@ -1,7 +1,7 @@
 "use client"; // Animasyon için
 
 import { motion } from "framer-motion";
-import { Scissors, Paintbrush, Sparkles, Droplet, Sun } from "lucide-react";
+import { Scissors, Paintbrush, Droplet } from "lucide-react";
 import React from "react";
 
 // Tüm hizmetlerimizi kategorilere ayırarak burada tanımlıyoruz
