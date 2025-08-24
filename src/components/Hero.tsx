@@ -10,14 +10,14 @@ export default function Hero() {
   return (
     <section className="relative w-full h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <Image
-        src="/hero-background.jpg"
+        src="/hero-background.png"
         alt="Kuaför salonunun modern ve şık iç mekanı"
         fill // layout="fill" yerine Next.js'in yeni standardı 'fill'
         style={{ objectFit: "cover" }} // objectFit artık style objesi içinde
         className="z-0"
         priority
       />
-      <div className="absolute inset-0 bg-gray-900 bg-opacity-50 z-10"></div>
+      <div className="absolute inset-0 bg-opacity-50 z-10"></div>
       <motion.div
         className="relative z-20 text-center text-white px-4"
         initial={{ opacity: 0, y: 20 }}
